@@ -79,6 +79,8 @@ cd backend
 npm install
 npm start
 ```
+<img width="1632" height="424" alt="Screenshot 2026-01-01 164713" src="https://github.com/user-attachments/assets/d7c27ef6-e21a-479b-b6b6-c65c2ab28c41" />
+
 
 The backend server will start on the default port (usually 3000 or as configured).
 
@@ -91,6 +93,7 @@ cd frontend
 npm install
 npm run dev
 ```
+<img width="1597" height="513" alt="Screenshot 2026-01-01 164856" src="https://github.com/user-attachments/assets/4e255cb4-8c84-49c0-987e-3e44bee8fd9d" />
 
 The frontend will be available at `http://localhost:5173` (Vite's default port).
 
@@ -104,6 +107,10 @@ The frontend will be available at `http://localhost:5173` (Vite's default port).
 2. Open your browser and navigate to the frontend URL (typically `http://localhost:5173`)
 
 3. Enter patient data for heart disease prediction
+<img width="1140" height="851" alt="Screenshot 2026-01-01 165002" src="https://github.com/user-attachments/assets/e41faf7d-9cff-4cc2-9a10-84fdbf4551f6" />
+## result
+<img width="1014" height="858" alt="Screenshot 2026-01-01 170916" src="https://github.com/user-attachments/assets/8211b5fd-ae3a-4c25-b0e6-1eac4ac42ee1" />
+<img width="993" height="645" alt="Screenshot 2026-01-01 171808" src="https://github.com/user-attachments/assets/fbf6b77b-6b76-4b20-848c-b47399c092cf" />
 
 ## Model Features
 
@@ -133,16 +140,9 @@ The model uses the following 13 features for prediction:
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
 
-## License
 
-ISC
 
 ## Author
 
-Prateek DeshBhandari
-
----
-Co-Authored-By: Warp <agent@warp.dev>
-=======
-# Machine-Learning-Based-Heart-Disease-Detection-Using-JavaScript-and-React
->>>>>>> 1c9f83eac5b15f1220f7b15bbbc0908f34e4c951
+### Prateek DeshBhandari
+gnail:deshbhandariprateek7@gmail.com

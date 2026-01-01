@@ -1,8 +1,8 @@
-<<<<<<< HEAD
-# Heart Disease Detection
+
+# Heart Disease Detection System Using Machine Learning and React JS
 
 A full-stack web application for predicting heart disease using machine learning.
-
+## The proposed Heart Disease Detection model achieved an accuracy of approximately 88–90% using a Random Forest classifier on the test dataset.
 ## Project Structure
 
 ```

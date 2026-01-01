@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Heart Disease Detection
 
 A full-stack web application for predicting heart disease using machine learning.
@@ -112,3 +113,6 @@ Prateek DeshBhandari
 
 ---
 Co-Authored-By: Warp <agent@warp.dev>
+=======
+# Machine-Learning-Based-Heart-Disease-Detection-Using-JavaScript-and-React
+>>>>>>> 1c9f83eac5b15f1220f7b15bbbc0908f34e4c951

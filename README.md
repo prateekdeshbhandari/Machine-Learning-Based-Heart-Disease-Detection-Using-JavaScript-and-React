@@ -6,11 +6,41 @@ A full-stack web application for predicting heart disease using machine learning
 ## Project Structure
 
 ```
-heart detection/
-├── backend/         # Node.js/Express API server
-├── frontend/        # React + Vite web interface
-├── ml/             # Python ML model training
-└── README.md
+HEART DETECTION
+│
+├── backend
+│   ├── api.js
+│   ├── server.js
+│   ├── heart_model.onnx
+│   ├── heart.csv
+│   ├── model
+│   ├── node_modules
+│   ├── package.json
+│   └── package-lock.json
+│
+├── frontend
+│   ├── dist
+│   │   ├── assets
+│   │   └── index.html
+│   │
+│   ├── src
+│   ├── index.html
+│   ├── node_modules
+│   ├── package.json
+│   ├── package-lock.json
+│   └── vite.config.js
+│
+├── ml
+│   ├── backend
+│   ├── heart_model.onnx
+│   ├── heart_pipeline.pkl
+│   ├── heart.csv
+│   └── train_export_onnx.py
+│
+├── node_modules
+│
+├── README.md
+
 ```
 
 ## Tech Stack

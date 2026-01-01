@@ -155,7 +155,7 @@ export default function App() {
             </div>
             
             <div>
-              <label style={{ display: 'block', marginBottom: 5, fontWeight: 'bold' }}>Fasting Blood Sugar > 120 mg/dl:</label>
+              <label style={{ display: 'block', marginBottom: 5, fontWeight: 'bold' }}>Fasting Blood Sugar &gt; 120 mg/dl:</label>
               <select 
                 name="fbs" 
                 value={formData.fbs}
@@ -293,24 +293,103 @@ export default function App() {
         {prediction && (
           <div style={{
             marginTop: 30,
-            padding: 20,
-            borderRadius: 8,
+            padding: 25,
+            borderRadius: 10,
             backgroundColor: prediction.error ? '#ffebee' : (prediction.prediction === 1 ? '#ffebee' : '#e8f5e8'),
-            border: `2px solid ${prediction.error ? '#f44336' : (prediction.prediction === 1 ? '#f44336' : '#4caf50')}`
+            border: `3px solid ${prediction.error ? '#f44336' : (prediction.prediction === 1 ? '#f44336' : '#4caf50')}`,
+            boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
           }}>
-            <h3 style={{ margin: '0 0 10px 0', color: prediction.error ? '#f44336' : (prediction.prediction === 1 ? '#f44336' : '#2e7d32') }}>
-              Prediction Result:
-            </h3>
+            <h2 style={{ 
+              margin: '0 0 20px 0', 
+              color: prediction.error ? '#f44336' : (prediction.prediction === 1 ? '#c62828' : '#2e7d32'),
+              textAlign: 'center',
+              fontSize: 28
+            }}>
+              🏥 Prediction Result
+            </h2>
             {prediction.error ? (
-              <p style={{ margin: 0, color: '#f44336' }}>❌ {prediction.error}</p>
+              <p style={{ margin: 0, color: '#f44336', fontSize: 16, textAlign: 'center' }}>❌ {prediction.error}</p>
             ) : (
               <div>
-                <p style={{ margin: '0 0 10px 0', fontSize: 18, fontWeight: 'bold' }}>
-                  {prediction.risk}
-                </p>
-                <p style={{ margin: 0, color: '#666' }}>
-                  Prediction Value: {prediction.prediction} {prediction.prediction === 1 ? '(Heart Disease Detected)' : '(No Heart Disease)'}
-                </p>
+                {/* Risk Category - Main Display */}
+                <div style={{
+                  backgroundColor: 'white',
+                  padding: 20,
+                  borderRadius: 8,
+                  marginBottom: 20,
+                  textAlign: 'center',
+                  border: '2px solid ' + (prediction.prediction === 1 ? '#f44336' : '#4caf50')
+                }}>
+                  <h3 style={{ 
+                    margin: '0 0 10px 0', 
+                    fontSize: 24,
+                    color: prediction.prediction === 1 ? '#c62828' : '#2e7d32'
+                  }}>
+                    {prediction.riskCategory || (prediction.prediction === 1 ? '⚠️ High Risk' : '✅ Low Risk')}
+                  </h3>
+                  <p style={{ margin: 0, fontSize: 16, color: '#666' }}>
+                    {prediction.prediction === 1 ? 'Heart Disease Risk Detected' : 'No Significant Heart Disease Risk'}
+                  </p>
+                </div>
+
+                {/* Detailed Metrics */}
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 15 }}>
+                  <div style={{
+                    backgroundColor: 'white',
+                    padding: 15,
+                    borderRadius: 8,
+                    textAlign: 'center'
+                  }}>
+                    <p style={{ margin: '0 0 5px 0', fontSize: 12, color: '#666', fontWeight: 'bold' }}>PREDICTION</p>
+                    <p style={{ margin: 0, fontSize: 24, fontWeight: 'bold', color: prediction.prediction === 1 ? '#f44336' : '#4caf50' }}>
+                      {prediction.prediction}
+                    </p>
+                    <p style={{ margin: '5px 0 0 0', fontSize: 11, color: '#999' }}>
+                      {prediction.prediction === 1 ? 'Positive' : 'Negative'}
+                    </p>
+                  </div>
+
+                  <div style={{
+                    backgroundColor: 'white',
+                    padding: 15,
+                    borderRadius: 8,
+                    textAlign: 'center'
+                  }}>
+                    <p style={{ margin: '0 0 5px 0', fontSize: 12, color: '#666', fontWeight: 'bold' }}>PROBABILITY</p>
+                    <p style={{ margin: 0, fontSize: 24, fontWeight: 'bold', color: '#3498db' }}>
+                      {prediction.probability ? (prediction.probability * 100).toFixed(0) : 0}%
+                    </p>
+                    <p style={{ margin: '5px 0 0 0', fontSize: 11, color: '#999' }}>Risk Score: {prediction.riskScore || 'N/A'}</p>
+                  </div>
+
+                  <div style={{
+                    backgroundColor: 'white',
+                    padding: 15,
+                    borderRadius: 8,
+                    textAlign: 'center'
+                  }}>
+                    <p style={{ margin: '0 0 5px 0', fontSize: 12, color: '#666', fontWeight: 'bold' }}>CONFIDENCE</p>
+                    <p style={{ margin: 0, fontSize: 24, fontWeight: 'bold', color: '#9c27b0' }}>
+                      {prediction.confidence || 0}%
+                    </p>
+                    <p style={{ margin: '5px 0 0 0', fontSize: 11, color: '#999' }}>Model Certainty</p>
+                  </div>
+                </div>
+
+                {/* Recommendation */}
+                <div style={{
+                  marginTop: 20,
+                  padding: 15,
+                  backgroundColor: 'rgba(255,255,255,0.7)',
+                  borderRadius: 8,
+                  borderLeft: '4px solid ' + (prediction.prediction === 1 ? '#f44336' : '#4caf50')
+                }}>
+                  <p style={{ margin: 0, fontSize: 14, fontWeight: 'bold', color: '#333' }}>
+                    {prediction.prediction === 1 
+                      ? '⚠️ Recommendation: Please consult with a cardiologist for proper medical evaluation.'
+                      : '✅ Recommendation: Maintain a healthy lifestyle and regular checkups.'}
+                  </p>
+                </div>
               </div>
             )}
           </div>

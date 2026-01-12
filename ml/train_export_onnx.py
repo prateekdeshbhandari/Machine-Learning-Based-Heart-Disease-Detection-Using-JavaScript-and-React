@@ -22,7 +22,26 @@ COLUMNS = [
 ]
 
 def load_and_clean(path):
-    df = pd.read_csv(path)
+    # Read CSV - try different methods
+    try:
+        # First try comma separator
+        df = pd.read_csv(path)
+        if len(df.columns) < 10:
+            # Try tab separator
+            df = pd.read_csv(path, delim_whitespace=True)
+    except:
+        df = pd.read_csv(path, delim_whitespace=True)
+    
+    # Fix column names - remove spaces
+    new_cols = []
+    for col in df.columns:
+        col_clean = str(col).strip().replace(' ', '')
+        new_cols.append(col_clean)
+    df.columns = new_cols
+    
+    print(f"[INFO] Columns found: {list(df.columns)}")
+    print(f"[INFO] Dataset shape: {df.shape}")
+    
     # basic clean: coerce ? to NaN, convert types
     df.replace('?', np.nan, inplace=True)
     df = df.dropna()
@@ -35,7 +54,7 @@ def load_and_clean(path):
     else:
         # assume last column is target
         target_col = df.columns[-1]
-        print(f"[INFO] Using last column '{target_col}' as target")
+        print(f"[INFO] Using column '{target_col}' as target")
 
     # Convert to binary 0/1 if multi-class
     if df[target_col].nunique() > 2:
@@ -43,6 +62,8 @@ def load_and_clean(path):
 
     X = df[COLUMNS].astype(float)
     y = df[target_col].astype(int)
+    
+    print(f"[INFO] Class distribution: {y.value_counts().to_dict()}")
     return X, y
 
 if __name__ == '__main__':

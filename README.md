@@ -147,4 +147,3 @@ The model uses the following 13 features for prediction:
 ### Prateek DeshBhandari
 gnail:deshbhandariprateek7@gmail.com
 
-prateek
